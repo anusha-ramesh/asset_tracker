@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+  <%= link_to "ASSET IN MY NAME" %> | 
+  <%= link_to "ASSET LIST" %>
+<% else %>
+  <%= link_to "login", new_user_session_path %>
+<% end %>
