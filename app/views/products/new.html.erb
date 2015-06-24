@@ -1,0 +1,24 @@
+<div>
+  <%= form_for @product do |f| %>
+  <ol>Asset Name: <%= f.text_field :asset_name %></ol>
+  <ol>Asset Image: <%= f.file_field :image, class: :image %></ol>
+  <ol>Asset Type: <%= f.collection_select(:product_type_id, ProductType.all, :id, :asset_type) %></ol>
+  
+  <div class = "btn" >
+    <button class = "add-inventory" onclick = "return false;">+1</button>
+  </div>
+  <div class = "inventory" >
+    <%= f.fields_for :inventories, [Inventory.new] do |u| %>
+
+      <ol class = "inventory-list">
+        Asset code:<%= u.text_field :asset_code %>
+      </ol>
+    <% end %>
+  </div>
+  <ol><%= f.submit "Save"  %></ol>
+<% end %>
+
+<div class = "add-image">
+  <img />
+</div>
+</div>

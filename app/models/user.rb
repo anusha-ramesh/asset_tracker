@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :assets
+  has_many :inventories
+  has_many :products, through: :inventories
   devise :ldap_authenticatable, :rememberable, :trackable
 
   # Setup accessible (or protected) attributes for your model
@@ -15,6 +16,9 @@ class User < ActiveRecord::Base
   #end
 
   def ldap_before_save
-	  self.email = Devise::LDAP::Adapter.get_ldap_param(self.user_name,"mail").first
+    self.email = Devise::LDAP::Adapter.get_ldap_param(self.user_name, "cn").first
+    if(!self.user_name.equal?("admin")) 
+      self.email = Devise::LDAP::Adapter.get_ldap_param(self.user_name,"mail").first
+    end
   end
 end

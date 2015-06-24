@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  asset_code: MyString
+  User: 
+  Product: 
+
+two:
+  asset_code: MyString
+  User: 
+  Product: 

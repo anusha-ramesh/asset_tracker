@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  asset_name: MyString
+  ProductType: 
+
+two:
+  asset_name: MyString
+  ProductType: 

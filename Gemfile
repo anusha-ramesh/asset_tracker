@@ -21,7 +21,9 @@ group :assets do
 end
 gem 'devise'
 gem 'devise_ldap_authenticatable'
-
+gem "paperclip", "~> 4.2"
+# gem 'strong_parameters'
+gem 'quiet_assets', group: :development
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

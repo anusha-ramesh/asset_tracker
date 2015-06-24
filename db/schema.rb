@@ -11,17 +11,37 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150619103933) do
+ActiveRecord::Schema.define(:version => 20150624094134) do
 
-  create_table "assets", :force => true do |t|
-    t.string   "asset_name"
-    t.string   "asset_type"
-    t.integer  "users_id"
+  create_table "inventories", :force => true do |t|
+    t.string   "asset_code"
+    t.integer  "user_id"
+    t.integer  "product_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "assets", ["users_id"], :name => "index_assets_on_users_id"
+  add_index "inventories", ["product_id"], :name => "index_inventories_on_Product_id"
+  add_index "inventories", ["user_id"], :name => "index_inventories_on_User_id"
+
+  create_table "product_types", :force => true do |t|
+    t.string   "asset_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "asset_name"
+    t.integer  "product_type_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "products", ["product_type_id"], :name => "index_products_on_ProductType_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",               :default => "", :null => false

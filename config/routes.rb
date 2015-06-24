@@ -2,6 +2,10 @@ Assettracker::Application.routes.draw do
   devise_for :users
   resource :home
   root to: "home#index"
+  resources "products-types", :as => :products_types, :controller => :products_types
+  resources :products
+  resources :inventories
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

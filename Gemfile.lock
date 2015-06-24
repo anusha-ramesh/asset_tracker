@@ -31,6 +31,10 @@ GEM
     arel (3.0.3)
     bcrypt (3.1.10)
     builder (3.0.4)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.7)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -65,7 +69,14 @@ GEM
     mysql2 (0.3.18)
     net-ldap (0.5.1)
     orm_adapter (0.5.0)
+    paperclip (4.2.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     polyglot (0.3.5)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.4.6)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -125,6 +136,8 @@ DEPENDENCIES
   devise_ldap_authenticatable
   jquery-rails
   mysql2
+  paperclip (~> 4.2)
+  quiet_assets
   rails (= 3.2.16)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

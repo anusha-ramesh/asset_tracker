@@ -1,0 +1,8 @@
+<%= fields_for :inventories do |u| %>
+  <ol class="inventory-list">
+    <li>
+  	  Asset code: <%= u.text_field :asset_code %>
+  	  <button class = "add-inventory" onclick = "return false;">+1</button>
+    </li>
+  </ol>
+<% end %>
