@@ -1,14 +1,38 @@
-<table>
-	<tr>
-		<th></th>
-	  <th>Asset Name</th>
-	</tr>
-	
-  <% @products.each do |product|  %>
-	<tr>
-		<td><%= image_tag product.image %></td>
-		<td><%= product.asset_name %></td>
-	</tr>
-	<% end %>
-	
-</table>
+<div class = "asset-list">
+	<table>
+	  <tr>
+	    <th>
+	  	  <h2>Asset Name</h2>
+	    </th>
+	  
+	    <th>
+	  	  <h2>Asset Type</h2>
+	    </th>
+	  
+	    <th>
+	  	  <h2>Asset Code</h2>
+	    </th>
+	  
+	    <th>
+	  	  <h2>User</h2>
+	    </th>
+	  </tr>
+	  
+    <% @products.each do |product|  %>
+	    <tr id = "accordion">
+		    <td><%= image_tag(product.image, :size => "80x80") %><%= product.asset_name %></td>
+		    <td><%= product.product_type.asset_type %></td>
+		    <% product.inventories.each do |inventory| %>
+		      <td><%= inventory.asset_code %></td>
+		      <% if inventory.user_id == nil %>
+		        <td>In Shelf</td>
+		      <% else %>
+		        <td><%= inventory.user.email %></td>
+		      <% end %>
+		      <% break %>
+		    <% end %>
+	    </tr>
+	  <% end %>
+	</table>
+</div>
+

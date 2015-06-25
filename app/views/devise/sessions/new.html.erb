@@ -1,19 +1,38 @@
-<h2>Log in</h2>
+<body class = "login_page">
+  <div class = "login">
+    <div class = "logo">  
+      <%= image_tag("logo_white.svg",size: "60x72") %><br>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :user_name %><br />
-    <%= f.text_field :user_name, autofocus: true %>
+    <div class = "title_head">
+      <%= image_tag("typo.png",size: "270x74") %>
+    </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.text_field :user_name, autocomplete: "off",:placeholder => "Username" %>
+      </div>
+      <hr class="login_span">
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %><br>
+      </div>
+
+      <div class = "alrt">
+        <p class="alert"><%= alert %></p><br>
+      </div>
+    </div>  
+      <div class="actions">
+        <%= f.submit "Log in", class: :form_button %><br>
+      </div>
+    <% end %>
+    <div class = "footer">
+      <p>
+        © 2015<%= image_tag("QBlogo_white.png") %>
+     </p>
+    </div>
+    
   </div>
+</body>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  
+  

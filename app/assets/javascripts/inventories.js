@@ -1,5 +1,6 @@
 $(document).ready(function() {
-   $('.add-inventory').click(function(event){
+  var count = 0;
+  $('.add-inventory').click(function(event){
   // $(".inventory").on("click",".add-inventory",function(event) {
   	// var parentNode = event.target.parentNode;
   	// var textDiv = parentNode.cloneNode(true);
@@ -7,7 +8,7 @@ $(document).ready(function() {
     // var old_name = textDiv.getAttribute('name');
     // console.log(old_name);
     textDiv = updateTextDiv(textDiv);
-    textDiv.appendTo('.inventory-list:last');
+    textDiv.appendTo('.inventory:last');
   	// document.getElementsByClassName("inventory-list")[0].appendChild(textDiv);
 
   	return false;
@@ -16,7 +17,6 @@ $(document).ready(function() {
   var preview = $(".add-image img");
 
     $(".image").change(function(event){
-    	console.log("...................");
        var input = $(event.currentTarget);
        var file = input[0].files[0];
        var reader = new FileReader();
@@ -26,6 +26,26 @@ $(document).ready(function() {
        };
        reader.readAsDataURL(file);
     });
+
+    // $('.list').click(function(event){
+    //   if($('.asset-view').css('display') == 'none' && count == 0)
+    //   { 
+    //     count ++;
+    //     $(this).closest('tr').find('td').fadeOut('fast', function(here)
+    //     { 
+    //      $(here).parents('tr:first').remove();                    
+    //     });
+    //     $('.asset-view').css('display','inline-flex');
+    //     $('.asset-view').show('fast');
+    //   }
+    //   else
+    //   {
+    //     $('.asset-view').hide('fast');
+    //     count = 0;
+    //   }
+    // });
+    //$('#accordion').accordion();
+
     return false;
 });
 

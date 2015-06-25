@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 
   def ldap_before_save
     self.email = Devise::LDAP::Adapter.get_ldap_param(self.user_name, "cn").first
-    if(!self.user_name.equal?("admin")) 
+    if(self.user_name != "admin") 
       self.email = Devise::LDAP::Adapter.get_ldap_param(self.user_name,"mail").first
     end
   end

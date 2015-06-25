@@ -12,7 +12,39 @@ div.btn
 	position: relative;
 }
 
-ol.inventory-list
+div.inventory-list
 {
 	position: relative;
+	left: 41px;
 }
+
+table
+{
+  text-align: auto;
+  width: 100%;
+}
+
+td
+{
+  text-align: center;
+}
+
+tr
+{
+  border: 1px solid black;
+  text-align: center;
+  width: 100%;
+}
+
+
+div.asset-list
+{
+	position: relative;
+  left: -69px;
+}
+
+.asset-view
+{
+  display: none;
+}
+

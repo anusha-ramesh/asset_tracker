@@ -1,0 +1,132 @@
+.login_page
+{
+  background: url("login_bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #ffffff;
+  overflow-y: hidden;
+  z-index: 10;
+}
+
+.login
+{
+	text-align: center;
+}
+
+.logo
+{
+  padding-top: 74px;
+}
+
+.title_head 
+{
+  padding-top: 10px;
+}
+
+form 
+{
+  display: block;
+  margin-top: 0em;
+}
+ 
+.login_form
+{
+	font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  margin-top: 164px;
+}
+
+.new_user
+{
+  font-size: 30px;
+  font-weight: lighter;
+  color: #ffffff;
+  border: none;
+  background: transparent;
+  padding-bottom: 5px;
+  padding-top: 25px;
+}
+
+#user_user_name
+{
+  font-size: 30px;
+  font-weight: lighter;
+  color: #ffffff;
+  border: none;
+  background: transparent;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+#user_password
+{
+  text-align: center;
+  font-size: 30px;
+  font-weight: lighter;
+  color: #ffffff;
+  border: none;
+  background: transparent;
+  padding-bottom: 5px;
+
+}
+
+.actions
+{
+  text-align: center;
+  width: 100%;
+  float: right;
+}
+
+.form_button
+{
+  width: 120px;
+  height: 50px;
+  font-size: 18px;
+  color: #000;
+  background-color: #02b3d9;
+  border-color: #269abc;
+}
+
+
+.alert
+{
+  font-size: large;
+  color: red;
+  font-family: sans-serif;
+  margin-top: 11px;
+}
+
+hr {
+  display: block;
+  -webkit-margin-before: 0.5em;
+  -webkit-margin-after: 0.5em;
+  /* -webkit-margin-start: auto; */
+  /* -webkit-margin-end: auto; */
+  border-style: inset;
+  border-width: 1px;
+}
+
+p {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+
+.footer
+{
+  padding-left: 0;
+  text-align: center;
+  padding-top: 9%;
+}
+
+.login_span
+{
+  width: 465px;
+}
+
+.alert
+{
+  height: 10px;
+}
+

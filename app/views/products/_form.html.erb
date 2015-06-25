@@ -1,0 +1,13 @@
+<div class = "asset-view" >
+	<% @products.each do |product|  %>
+	  <div class = "asset-image" >
+      <%= image_tag(product.image, :size => "260x180") %>
+	  </div>
+
+	  <div class = "asset-details">
+	  	<h2><%= product.asset_name %></h2>
+	  	<ol>Type: <%= product.product_type.asset_type %></ol>
+	  	
+	  </div>
+	<% end %>
+</div>
