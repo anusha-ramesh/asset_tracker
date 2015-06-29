@@ -1,5 +1,6 @@
 Assettracker::Application.routes.draw do
   devise_for :users
+  resources :admin
   resource :home
   root to: "home#index"
   resources "products-types", :as => :products_types, :controller => :products_types

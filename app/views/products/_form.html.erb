@@ -1,13 +1,71 @@
-<div class = "asset-view" >
-	<% @products.each do |product|  %>
-	  <div class = "asset-image" >
-      <%= image_tag(product.image, :size => "260x180") %>
-	  </div>
+<div class = "asset_table">
+	<table class = "header_table">
+		<thead>
+			<tr>
+		    <th>Asset Name</th>
+		  
+		    <th>Asset Type</th>
+		  
+		    <th>Asset Code</th>
+		  
+		    <th>User</th>
+	    </tr>
+		</thead>
+	</table>  
+  <div class = "asset_list_body">
+  	<table id = "asset_list">
+  		<tbody id = "table_content_list">
+  		  <% @products.each do |product|  %>
+  		  
 
-	  <div class = "asset-details">
-	  	<h2><%= product.asset_name %></h2>
-	  	<ol>Type: <%= product.product_type.asset_type %></ol>
-	  	
-	  </div>
-	<% end %>
+  			  <tr class = "asset_list_row"> 
+  				  <td class = "name_td">
+  					  <div class= "asset_img"><%= image_tag(product.image, :size => "40x40") %></div>
+  					  <div class = "asset_fieldname"><%= product.asset_name %></div>
+  				  </td>
+  				  <td class = "assetType">
+  					  <%= product.product_type.asset_type %>
+  				  </td>
+  				  <% product.inventories.each do |inventory| %>
+		          <td><%= inventory.asset_code %></td>
+		          <% if inventory.user_id == nil %>
+		            <td class = "user_td">In Shelf
+		            	<div class = "arrow_div_down">
+		            		<%= image_tag("arrow.svg", :size => "20x20") %>
+		            	</div>
+		            </td>
+		          <% else %>
+		            <td class = "user_td">
+		          	  <div class = "user_div"><%= inventory.user.email %></div>
+		          	  <div class = "arrow_div_down">
+		            		<%= image_tag("arrow.svg", :size => "20x20") %>
+		            	</div>
+		            </td>
+		          <% end %>
+		          <% break %>
+		        <% end %>
+		      </tr>
+          
+          <tr class = "asset_assign">
+						<td   colspan = "5" class = "assign_table">
+							<div class = "assign_image">
+                <%= image_tag(product.image, :size => "243x200") %>
+              </div>
+              <div class = "edit_asset">
+              	<p class = "edit_head"><%= product.asset_name %></p>
+                <p>Type: <label class = "edit_asset_input"><%= product.product_type.asset_type %></label></p>
+                <p>Code: <%= product.collection_select() %></p>
+              </div>
+              <div class = "arrow_div_up">
+              	<%= image_tag("arrow.svg", :size => "20x20") %>
+              </div>
+						</td>
+          </tr>
+          
+  		  
+  		  <% end %>
+  		</tbody>
+  	</table>
+  </div>
 </div>
+

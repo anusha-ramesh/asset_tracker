@@ -18,33 +18,158 @@ div.inventory-list
 	left: 41px;
 }
 
-table
-{
-  text-align: auto;
-  width: 100%;
+
+#asset_list {
+  min-width: 100% !important;
+  border-collapse: collapse;
 }
 
-td
-{
-  text-align: center;
+.header_table {
+  min-width: 100% !important;
+  border-collapse: collapse;
 }
 
-tr
-{
-  border: 1px solid black;
-  text-align: center;
-  width: 100%;
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+  font-family: 'Open Sans', sans-serif;
 }
 
-
-div.asset-list
-{
-	position: relative;
-  left: -69px;
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
 }
 
-.asset-view
+.header_table th {
+  padding: 9px;
+  text-align: left;
+  font-size: 20px;
+  border-bottom: 1px solid #d7d7d7;
+  color: #282828;
+  background: #fff;
+  width: 25%;
+}
+
+.asset_table
+{
+  display: block;
+}
+
+.content {
+  max-width: 100% !important;
+  padding: 2% 2% 0%;
+  max-height: 100% !important;
+}
+
+.asset_list_body
+{
+  overflow: auto;
+  max-height: 481px;
+}
+
+.asset_assign
 {
   display: none;
 }
 
+.assign_table {
+  border-top: 10px solid #b0bec5;
+  border-bottom: 10px solid #b0bec5;
+}
+
+.asset_list_row
+{
+  display: table-row;
+}
+
+td {
+  color: #282828;
+  padding-left: 5px;
+  background: #fff;
+  width: 25%;
+  border-top: 1px solid #d7d7d7;
+}
+
+.asset_img {
+  float: left;
+  padding: 10px;
+}
+
+.asset_fieldname {
+  padding: 20px;
+}
+
+.arrow_div_down {
+  cursor: pointer;
+  float: right;
+  width: 20px;
+  height: 18px;
+  padding-right: 15px;
+}
+
+.assign_image {
+  padding-top: 4%;
+  float: left;
+  width: 20% !important;
+}
+
+.assign_image img {
+  width: 100% !important;
+  height: 200px !important;
+}
+
+.edit_asset {
+  padding-left: 3%;
+  width: 35% !important;
+  float: left;
+}
+
+.edit_head{
+  padding-top: 12%;
+  font-size: 20px;
+  border: none;
+  background: transparent;
+  color: #000000;
+}
+
+.edit_asset_input {
+  font-size: 16px;
+  border: none;
+  background: transparent;
+  color: #000000;
+}
+
+.arrow_div_up
+{
+  transform: rotate(180deg);
+  padding: 2% 0 1% 1%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  float: right;
+}
+
+#login_user {
+  float: left;
+  width: 100px;
+  padding-left: 20px;
+  color: #b0bec5;
+  border: none;
+  background: transparent;
+}
+
+#logout {
+  width: 20px;
+  height: 20px;
+  padding-top: 4px;
+  float: left;
+  cursor: pointer;
+}
+
+.error
+{
+  color: red;
+  padding-left: 126px;
+}

@@ -76,6 +76,14 @@ form
   float: right;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+tr:focus {
+    outline: none;
+}
+
 .form_button
 {
   width: 120px;
@@ -113,11 +121,14 @@ p {
   -webkit-margin-end: 0px;
 }
 
-.footer
-{
-  padding-left: 0;
+.footer {
+  margin-top: 1%;
+  width: 100%;
+  height: 10%;
+  padding: 1px;
+  position: fixed;
+  bottom: 0;
   text-align: center;
-  padding-top: 9%;
 }
 
 .login_span
@@ -130,3 +141,39 @@ p {
   height: 10px;
 }
 
+#login_user {
+  float: left;
+  width: 100px;
+  padding-left: 20px;
+  color: #b0bec5;
+  border: none;
+  background: transparent;
+  margin-top: 6px;
+}
+
+#logout {
+  width: 20px;
+  height: 20px;
+  padding-top: 4px;
+  float: left;
+  cursor: pointer;
+}
+
+.search_div {
+  margin-top: 5px;
+  padding: 5px;
+  float: right;
+}
+
+#search_imag {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  float: left;
+}
+
+.search_tab {
+  margin: 0;
+  padding: 5px;
+  float: left;
+}

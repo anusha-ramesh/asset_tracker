@@ -1,5 +1,10 @@
 class ProductsController < ApplicationController
+  layout "user"
   respond_to :js, :html
+  before_filter :authenticate_user!
+  before_filter :set_cache_buster
+  before_filter :admin_authorize, only: [:new, :create]
+
 	def new
     @product = Product.new
 	end
@@ -11,8 +16,13 @@ class ProductsController < ApplicationController
 	def create
     @product = Product.new(product_params)
     if @product.save
-    	redirect_to root_path
+      if(current_user.user_name == "admin")
+        redirect_to admin_index_path
+      else
+    	  redirect_to root_path
+      end
     else
+      flash[:alert] = "Fields require!"
     	redirect_to new_product_path
     end
   end

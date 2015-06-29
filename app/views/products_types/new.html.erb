@@ -1,4 +1,9 @@
 <%= render partial: "form"  %>
-<ol>
-	<%= link_to "Back", root_path %>
-</ol>
+<div class = "error">
+	<%= flash[:alert] %>
+	<%= flash[:notice] %>
+</div>
+
+<div class = "notice">
+	<%= flash[:notice] %>
+</div>

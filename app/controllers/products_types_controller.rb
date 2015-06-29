@@ -1,4 +1,8 @@
 class ProductsTypesController < ApplicationController
+	layout "user"
+	before_filter :authenticate_user!
+	before_filter :admin_authorize
+	before_filter :set_cache_buster
 	def new
 		@product_type = ProductType.new
 	end

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class HomeControllerTest < ActionController::TestCase
+class AdminControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
@@ -8,4 +8,5 @@ class HomeControllerTest < ActionController::TestCase
     get :index
     assert_redirected_to new_user_session_path
   end
+
 end

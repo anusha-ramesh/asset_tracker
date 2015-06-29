@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AssetController</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+
+    <%= csrf_meta_tags %>
+  </head>
+  <body class = "home_body">
+  	<div class = "header">
+			<% if user_signed_in? %>
+			  <%= image_tag("logo_white.svg", size: "61x52",id: "header-logo") %>
+			  <div class = "tab_desktop">
+			  	<% if current_user.user_name == "admin"%>
+			  	  <%= link_to "ADD PRODUCT TYPE", new_products_type_path, class: :h2 %>
+			  	  <div class = "h2">|</div>
+				    <%= link_to "ADD PRODUCT",  new_product_path, class: :h2%>
+				    <div class = "h2">|</div> 
+				    <%= link_to "ASSET LIST", admin_index_path, class: :h2 %>
+				  <%else%>
+				    <%= link_to "ASSET IN MY NAME", root_path, class: :h2 %>
+				    <div class = "h2">|</div> 
+				    <%= link_to "ASSET LIST", products_path, class: :h2 %>
+				  <% end %>
+				 
+				</div>
+			<% else %>
+			  <%= link_to "login", new_user_session_path %>
+			<% end %>
+			<div class = "search_div">
+				<%= image_tag("search.svg", size: "40x40",id: "search_imag") %>
+				<div class = "search_tab">
+					<p id = "login_user">
+						<%= current_user.user_name %>
+					</p>
+					<%= image_tag("sign_out.svg", size: "30x34",id: "logout") %>
+				</div>
+			</div> 
+			<br clear = "all">
+    </div>
+    <%= yield %>
+    <p class="notice"><%= notice %></p>
+  </body>
+</html>
