@@ -78,7 +78,37 @@ $(document).ready(function() {
   });
 
   
-    // $('.arrow_div_down').click(function(event){
+
+  // $('.select_code').change(function()
+  // {
+  //   var getValue=$(this).val();
+  //   alert(getValue);
+  //   $.ajax
+  //   ({
+  //      method: "GET",
+  //   //    url: 
+  //      success: function(result)
+  //      {
+          
+  //         console.log("............");
+  //      }
+  //   }); 
+
+  // })
+$("#search").autocomplete({
+    source: availableTags,
+    messages: {
+        noResults: '',
+        results: function() {
+          
+        }
+    }
+});
+
+// $('.search-query').bind('railsAutocomplete.select', function(event, data) {
+//   $('.search-me').trigger('click')
+//   });
+ // $('.arrow_div_down').click(function(event){
     //   if($('.asset_assign').css('display') == 'none')
     //   {
     //     $('.asset_list_row').css('display','none');

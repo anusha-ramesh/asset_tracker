@@ -1,10 +1,17 @@
+<%= form_tag products_path, method: :get do %>
+ <p id = "search">
+    <%= autocomplete_field_tag :search, params[:search], autocomplete_product_asset_name_products_path, :placeholder => 'Asset Name', autocomplete: "off" %>
+   <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
 <div class = "asset_table">
 	<table class = "header_table">
 		<thead>
 			<tr>
-		    <th>Asset Name</th>
+		    <th><%= sortable "Asset Name"%></th>
 		  
-		    <th>Asset Type</th>
+		    <th> Asset Type</th>
 		  
 		    <th>Asset Code</th>
 		  
@@ -16,9 +23,7 @@
   	<table id = "asset_list">
   		<tbody id = "table_content_list">
   		  <% @products.each do |product|  %>
-  		  
-
-  			  <tr class = "asset_list_row"> 
+  		   <tr class = "asset_list_row"> 
   				  <td class = "name_td">
   					  <div class= "asset_img"><%= image_tag(product.image, :size => "40x40") %></div>
   					  <div class = "asset_fieldname"><%= product.asset_name %></div>
@@ -26,6 +31,7 @@
   				  <td class = "assetType">
   					  <%= product.product_type.asset_type %>
   				  </td>
+
   				  <% product.inventories.each do |inventory| %>
 		          <td><%= inventory.asset_code %></td>
 		          <% if inventory.user_id == nil %>
@@ -49,15 +55,23 @@
           <tr class = "asset_assign">
 						<td   colspan = "5" class = "assign_table">
 							<div class = "assign_image">
-                <%= image_tag(product.image, :size => "243x200") %>
+                <%= image_tag(product.image) %>
               </div>
               <div class = "edit_asset">
               	<p class = "edit_head"><%= product.asset_name %></p>
                 <p>Type: <label class = "edit_asset_input"><%= product.product_type.asset_type %></label></p>
-                <p>Code: <%= product.collection_select() %></p>
+                <p>Code: <%= collection_select(product.inventories, :id,product.inventories.all, :id, :asset_code,{}, {class: :select_code}) %></p>
               </div>
+                
+              
+
+
               <div class = "arrow_div_up">
               	<%= image_tag("arrow.svg", :size => "20x20") %>
+              </div>
+              
+              <div class = "select_user">
+                ...
               </div>
 						</td>
           </tr>
@@ -68,4 +82,5 @@
   	</table>
   </div>
 </div>
+<%= paginate @products %>
 

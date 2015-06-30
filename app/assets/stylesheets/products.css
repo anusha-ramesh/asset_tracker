@@ -5,6 +5,7 @@ div.add-image
   height: 186px;
   left: 477px;
   top: 49px;
+  background: transparent;
 }  
 
 div.btn
@@ -113,11 +114,13 @@ td {
   padding-top: 4%;
   float: left;
   width: 20% !important;
+  padding-bottom: 30px;
+  padding-left: 30px;
 }
 
 .assign_image img {
-  width: 100% !important;
-  height: 200px !important;
+  width: 95% !important;
+  height: 275px !important;
 }
 
 .edit_asset {
@@ -172,4 +175,25 @@ td {
 {
   color: red;
   padding-left: 126px;
+}
+
+.select_user
+{
+  padding-right: 113px;
+  padding-left: 383px;
+  padding-top: 129px;
+}
+
+ .header_table th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+ .header_table th .asc {
+  background-image: url(new-arrow-up.gif);
+}
+
+ .header_table th .desc {
+  background-image: url(gray-down-arrow-icon.png);
 }

@@ -4,7 +4,9 @@ Assettracker::Application.routes.draw do
   resource :home
   root to: "home#index"
   resources "products-types", :as => :products_types, :controller => :products_types
-  resources :products
+  resources :products do
+    get :autocomplete_product_asset_name, :on => :collection
+  end
   resources :inventories
 
   # The priority is based upon order of creation:

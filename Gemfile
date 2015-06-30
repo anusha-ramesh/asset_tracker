@@ -26,6 +26,8 @@ gem "paperclip", "~> 4.2"
 gem 'quiet_assets', group: :development
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'rails3-jquery-autocomplete'
+gem 'kaminari'
 gem 'paper_trail', '~> 4.0.0.rc'
 
 # To use ActiveModel has_secure_password

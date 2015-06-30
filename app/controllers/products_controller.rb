@@ -4,13 +4,18 @@ class ProductsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :set_cache_buster
   before_filter :admin_authorize, only: [:new, :create]
-
+  autocomplete :product, :asset_name
+  helper_method :sort_column, :sort_direction
 	def new
     @product = Product.new
 	end
   
   def index
-    @products = Product.all
+    if params[:search]
+      @products = Product.where('asset_name LIKE ?', "%#{params[:search]}%").order(sort_column + " " + sort_direction).page params[:page]
+    else
+      @products = Product.order(sort_column + " " + sort_direction).page params[:page]
+    end
   end
 
 	def create
@@ -27,6 +32,7 @@ class ProductsController < ApplicationController
     end
   end
 
+
   private
 
   def product_params
@@ -38,6 +44,23 @@ class ProductsController < ApplicationController
       :inventories_attributes => params[:product][:inventories_attributes]
     }
   end
+
+  def sort_column
+    Product.column_names.include?(params[:sort]) ? params[:sort] : "asset_name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  # def resolve_layout
+  #   case action_name
+  #     when "index"
+  #     "user"
+  #     when "new", "create"
+  #     "admin"
+  #   end
+  # end
 
   
 end
