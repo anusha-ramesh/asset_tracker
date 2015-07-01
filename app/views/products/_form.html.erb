@@ -1,7 +1,7 @@
 <%= form_tag products_path, method: :get do %>
- <p id = "search">
+ <p class = "search-asset">
     <%= autocomplete_field_tag :search, params[:search], autocomplete_product_asset_name_products_path, :placeholder => 'Asset Name', autocomplete: "off" %>
-   <%= submit_tag "Search", :name => nil %>
+    <%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
 
@@ -9,9 +9,15 @@
 	<table class = "header_table">
 		<thead>
 			<tr>
-		    <th><%= sortable "Asset Name"%></th>
+		    <th> Asset Name 
+          <%= link_to image_tag("up_arrow.png", :border => 0, size: "20x20"), products_path(:sort => "asc"), :class => "sort_img" %>
+          <%= link_to image_tag("down_arrow.png", :border => 0, size: "20x20"), products_path(:sort => "desc"), :class => "desc_img" %>
+        </th>
 		  
-		    <th> Asset Type</th>
+		    <th> Asset Type
+          <%= link_to image_tag("up_arrow.png", :border => 0, size: "20x20"), products_path(:sort => "type_asc"), :class => "sort_img" %>
+          <%= link_to image_tag("down_arrow.png", :border => 0, size: "20x20", class: :desc_arrow), products_path(:sort => "type_desc"), :class => "desc_img" %>
+        </th>
 		  
 		    <th>Asset Code</th>
 		  
@@ -60,19 +66,24 @@
               <div class = "edit_asset">
               	<p class = "edit_head"><%= product.asset_name %></p>
                 <p>Type: <label class = "edit_asset_input"><%= product.product_type.asset_type %></label></p>
-                <p>Code: <%= collection_select(product.inventories, :id,product.inventories.all, :id, :asset_code,{}, {class: :select_code}) %></p>
+                <p>Code: <%= collection_select(product.inventories, :id,product.inventories.all, :id, :asset_code,{}, {class: :select_code}) %>
+                </p>
               </div>
-                
-              
-
-
+               
               <div class = "arrow_div_up">
-              	<%= image_tag("arrow.svg", :size => "20x20") %>
+                <%= image_tag("arrow.svg", :size => "20x20") %>
+              </div>
+
+              
+              
+              
+              
+              <div class = "btn_td">
+                <button class = "btn-green">ASSIGN</button>
+                <button class = "btn-green">ASSIGN TO ME</button>
+                <button class = "btn-red">REQUEST RELEASE</button>
               </div>
               
-              <div class = "select_user">
-                ...
-              </div>
 						</td>
           </tr>
           
@@ -82,5 +93,6 @@
   	</table>
   </div>
 </div>
+
 <%= paginate @products %>
 

@@ -1,0 +1,7 @@
+<div class = "asset_user">
+	<% if @inventory.user_id == nil %>
+	  In Shelf
+	<% else %>
+	 <%= @inventory.user.email %>
+	<% end %>
+</div>

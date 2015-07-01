@@ -5,16 +5,33 @@ class ProductsController < ApplicationController
   before_filter :set_cache_buster
   before_filter :admin_authorize, only: [:new, :create]
   autocomplete :product, :asset_name
-  helper_method :sort_column, :sort_direction
 	def new
     @product = Product.new
 	end
   
   def index
+
+    @products = Product.page params[:page]
+
+
     if params[:search]
-      @products = Product.where('asset_name LIKE ?', "%#{params[:search]}%").order(sort_column + " " + sort_direction).page params[:page]
-    else
-      @products = Product.order(sort_column + " " + sort_direction).page params[:page]
+      @products = Product.where('asset_name LIKE ?', "%#{params[:search]}%").order("asset_name ASC").page params[:page]
+    end
+
+    if params[:sort] == "asc"
+      @products = Product.order("asset_name ASC").page params[:page]
+    end
+    
+    if params[:sort] == "desc"
+      @products = Product.order("asset_name DESC").page params[:page]
+    end
+
+    if params[:sort] == "type_asc"
+      @products = Product.includes(:product_type).order("product_types.asset_type ASC"). page params[:page]
+    end
+
+    if params[:sort] == "type_desc"
+      @products = Product.includes(:product_type).order("product_types.asset_type DESC"). page params[:page]
     end
   end
 
@@ -32,6 +49,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def get_user
+    @inventory = Inventory.find(params[:id])
+    puts "......................"
+  end
+
 
   private
 
@@ -45,14 +67,7 @@ class ProductsController < ApplicationController
     }
   end
 
-  def sort_column
-    Product.column_names.include?(params[:sort]) ? params[:sort] : "asset_name"
-  end
   
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
-
   # def resolve_layout
   #   case action_name
   #     when "index"

@@ -77,33 +77,36 @@ $(document).ready(function() {
     accordion.accordion( "option", "active",  false );
   });
 
-  
-
-  // $('.select_code').change(function()
+  // function get_user(value)
   // {
-  //   var getValue=$(this).val();
-  //   alert(getValue);
-  //   $.ajax
-  //   ({
-  //      method: "GET",
-  //   //    url: 
-  //      success: function(result)
-  //      {
+  //   cosole.log("............");
+  // }
+ $('.select_code').change(function()
+  {
+    var getValue=$(this).val();
+    alert(getValue);
+    var URL = 'products/get_user'
+    $.ajax
+    ({
+       url: URL,
+       data: {id:  getValue}
+       // success: function(result)
+       // {
           
-  //         console.log("............");
-  //      }
-  //   }); 
+       //    console.log("............");
+       // }
+    }); 
 
-  // })
-$("#search").autocomplete({
-    source: availableTags,
-    messages: {
-        noResults: '',
-        results: function() {
+  })
+// $("#search").autocomplete({
+//     source: availableTags,
+//     messages: {
+//         noResults: '',
+//         results: function() {
           
-        }
-    }
-});
+//         }
+//     }
+// });
 
 // $('.search-query').bind('railsAutocomplete.select', function(event, data) {
 //   $('.search-me').trigger('click')

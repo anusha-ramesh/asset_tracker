@@ -6,9 +6,10 @@ Assettracker::Application.routes.draw do
   resources "products-types", :as => :products_types, :controller => :products_types
   resources :products do
     get :autocomplete_product_asset_name, :on => :collection
+    get :get_user, :on => :collection
   end
   resources :inventories
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
