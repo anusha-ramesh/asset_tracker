@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  layout "user"
+  layout :resolve_layout
   respond_to :js, :html
   before_filter :authenticate_user!
   before_filter :set_cache_buster
@@ -51,7 +51,11 @@ class ProductsController < ApplicationController
 
   def get_user
     @inventory = Inventory.find(params[:id])
-    puts "......................"
+    render :layout => false 
+  end
+
+  def show
+
   end
 
 
@@ -68,14 +72,14 @@ class ProductsController < ApplicationController
   end
 
   
-  # def resolve_layout
-  #   case action_name
-  #     when "index"
-  #     "user"
-  #     when "new", "create"
-  #     "admin"
-  #   end
-  # end
+  def resolve_layout
+    case action_name
+      when "index", "new", "create"
+      "user"
+      when "get_user"
+      "application"
+    end
+  end
 
   
 end

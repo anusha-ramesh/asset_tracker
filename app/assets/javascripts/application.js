@@ -15,3 +15,6 @@
 //= require_tree .
 //= require main
 //= require jquery-ui 
+$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+    options.async = true;
+});

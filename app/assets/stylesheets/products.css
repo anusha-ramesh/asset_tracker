@@ -125,7 +125,7 @@ td {
 
 .edit_asset {
   padding-left: 3%;
-  width: 35% !important;
+  width: 24% !important;
   float: left;
 }
 
@@ -144,14 +144,14 @@ td {
   color: #000000;
 }
 
-.arrow_div_up
-{
+.arrow_div_up {
   transform: rotate(180deg);
-  padding: 2% 0 1% 1%;
+  padding: 0% 1px 0% 1%;
   width: 20px;
-  height: 20px;
+  height: 0px;
   cursor: pointer;
   float: right;
+  margin-top: -25px;
 }
 
 #login_user {
@@ -209,26 +209,28 @@ td {
 }
 
 .btn_td {
-  float: left;
-  padding-bottom: 0%;
-  padding-top: 59px;
-  padding-left: 109px;
-  width: 17% !important;
+  float: right;
+  padding-bottom: 14%;
+  width: 12% !important;
+  padding-top: 25px;
+ padding-right: 142px;
 }
 
 .btn-green {
-  width: 80%;
+  width: 140%;
   cursor: pointer;
   padding: 12px;
-  margin-bottom: 30%;
+  margin-bottom: 35%;
   color: #fff;
   background-color: #31988e;
   border: none;
   cursor: pointer;
+  padding-left: 15px;
+  margin-top: 0px;
 }
 
 .btn-red {
-  width: 80%;
+  width: 140%;
   cursor: pointer;
   padding: 12px;
   color: #fff;
@@ -241,7 +243,7 @@ td {
 .search-asset
 {
   padding-left: 0px;
-  margin-top: -6px;
+  margin-top: -20px;
 }
 
 .ui-menu-item
@@ -249,3 +251,31 @@ td {
   display: none;
 }
 
+.asset-user
+{
+  
+}
+
+.user-state {
+  position: static;
+}
+
+.assign_datalist {
+  vertical-align: top;
+  width: 24% !important;
+  padding-top: 4.3%;
+  float: left;
+  height: -1px;
+  margin-top: -31px;
+}
+
+.input_datalist {
+  font-size: 16px;
+  padding: 4%;
+  width: 80%;
+}
+
+.ui-accordion-content-active
+{
+  height: 455px;
+}

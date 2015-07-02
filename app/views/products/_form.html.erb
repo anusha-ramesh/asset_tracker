@@ -70,19 +70,45 @@
                 </p>
               </div>
                
-              <div class = "arrow_div_up">
-                <%= image_tag("arrow.svg", :size => "20x20") %>
-              </div>
+              
+              
+              <div class = "asset-user">
+                <% product.inventories.each do |inventory| %>
+                 
+                  <% if inventory.user_id == nil %>
+                  <p class = "user-state">
+                    In Shelf
+                  </p>
 
-              
-              
-              
-              
-              <div class = "btn_td">
-                <button class = "btn-green">ASSIGN</button>
-                <button class = "btn-green">ASSIGN TO ME</button>
-                <button class = "btn-red">REQUEST RELEASE</button>
+                  <%= form_for :inventories do |f| %>
+                    <div class = "assign_datalist">
+                      <%= f.text_field :user_id, {:class => "input_datalist"} %>
+                    </div>
+
+                    <div class = "arrow_div_up">
+                      <%= image_tag("arrow.svg", :size => "20x20") %>
+                    </div>
+                    <div class = "btn_td">
+                      
+                      
+                      <%= f.submit "ASSIGN", :class => "btn-green" %>
+                      <button class = "btn-green">ASSIGN TO ME</button>
+                      <button class = "btn-red">REQUEST RELEASE</button>
+                    </div>
+                    <% end %>
+                  <% else %>
+                    <p class = "user-state">
+                      <%= inventory.user.email %>
+                    </p>
+                    <div class = "btn_td">
+                      <button class = "btn-red">REQUEST RELEASE</button>
+                    </div>
+                  <% end %>
+                  <% break %>
+                <% end %>
+                
               </div>
+              
               
 						</td>
           </tr>

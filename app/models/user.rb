@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :remember_me, :user_name
+  scope :asset_user, -> { where(arel_table[:user_name].not_eq("admin")) }
   # attr_accessible :title, :body
   #before_save :get_ldap_email
   #def get_ldap_email
