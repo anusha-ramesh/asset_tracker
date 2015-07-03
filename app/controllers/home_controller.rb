@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 	before_filter :authenticate_user!
 	before_filter :set_cache_buster
 	def index
-    @products = Product.all
+      # @user = User.find(current_user)
+      # @inventories = @user.inventories.all
 	end
 end

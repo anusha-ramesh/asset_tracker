@@ -72,6 +72,45 @@ $(document).ready(function() {
       }
     }); 
   })
+
+  $('.input_datalist').autocomplete({
+    minLength: 3,
+    option: {enable: true},
+    source: $('.input_datalist').data('autocomplete-source'),
+    scroll: true,
+    select: function( event, ui ) {
+      $(this).val(ui.item.label);
+      $('#user_id').val(ui.item.value);
+      return false;
+    },
+    focus: function(event) {
+      return false;
+    }
+
+  });
+
+  
+  $('.btn-green').click(function(event)
+  {
+    var getEmail = $('.ui-accordion-content-active').find($('.input_datalist')).val();
+    var getId = $('.ui-accordion-content-active').find($('.select_code')).val();
+    var URL = 'products/update_user';
+    $.ajax
+    ({
+      method: "PUT",
+      url: URL,
+      data: {id: getId, email: getEmail}
+    });
+  })
+    
+  //   // select: (event, ui) ->
+
+    // event.preventDefault()
+
+    // $(this).val ui.item.label
+    // $('#user_id').val ui.item.value
+  
+    
   return false;
 });
 

@@ -54,8 +54,15 @@ class ProductsController < ApplicationController
     render :layout => false 
   end
 
-  def show
-
+  def update_user
+    @inventory = Inventory.find(params[:id])
+    @user = User.find_by_email(params[:email])
+    @inventory.user_id = @user.id
+    if @inventory.save
+      redirect_to new_product_path
+    else
+      redirect_to(:back)
+    end
   end
 
 
