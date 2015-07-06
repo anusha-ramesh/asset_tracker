@@ -1,13 +1,9 @@
-<div class = "asset_user">
-	<% if @inventory.user_id == nil %>
-	  <p class = "user-state">
-	    In Shelf
-	  </p>
-	<% else %>
-	  <p class = "user-state">
-		<%= @inventory.user.email %>
-	  </p>
-	<% end %>
-</div>
+<% if @inventory.user_id == nil %>
+  In Shelf
+<% else %>
+  <%= @inventory.user.email %>
+<% end %>
+
+
 
 

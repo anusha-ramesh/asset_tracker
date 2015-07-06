@@ -11,14 +11,6 @@ class AdminController < ApplicationController
 	  if params[:search]
       @products = Product.where('asset_name LIKE ?', "%#{params[:search]}%").order("asset_name ASC").page params[:page]
     end
-
-    if params[:sort] == "asc"
-      @products = Product.order("asset_name ASC").page params[:page]
-    end 
-
-    if params[:sort] == "desc"
-      @products = Product.order("asset_name DESC").page params[:page]
-    end
   end
  
 

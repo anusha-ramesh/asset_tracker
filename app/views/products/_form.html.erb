@@ -4,7 +4,9 @@
     <%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
-
+<div class="error" >
+  <%= flash[:alert]%>
+</div>
 <div class = "asset_table">
 	<table class = "header_table">
 		<thead>
@@ -79,43 +81,51 @@
                   <p class = "user-state">
                     In Shelf
                   </p>
+                  <div class = "btn_td">
+                      
+                      <button class = "btn-green">ASSIGN</button>
+                      <% if current_user.user_name == "admin" %>
+                        <button class = "btn-green2">DELETE</button>
+                      <% else %>
+                        <button class = "btn-green1">ASSIGN TO ME</button>
+                      <% end %>
+                      <button class = "disable_btn">REQUEST RELEASE</button>
+                    </div>
                   <% else %>
                     <p class = "user-state">
                       <%= inventory.user.email %>
                     </p>
-                  <% end %>
-                  
-
-                  <div class = "assign_datalist">
-                    <%= text_field_tag nil, nil, :id => 'asset_user_name', :class => "input_datalist", data: {autocomplete_source: User.asset_user.map { |t| { :label => t.email, :value => t.id } } } %>
-                    <%= hidden_field :user_id, id: 'user_id' %>
                     
-                  </div>
-
-                    <div class = "arrow_div_up">
-                      <%= image_tag("arrow.svg", :size => "20x20") %>
-                    </div>
                     <div class = "btn_td">
                       
                       <button class = "btn-green">ASSIGN</button>
-                      <button class = "btn-green">ASSIGN TO ME</button>
+                      <% if current_user.user_name == "admin" %>
+                        <button class = "btn-green2">DELETE</button>
+                      <% else %>
+                      
+                        <button class = "btn-green1">ASSIGN TO ME</button>
+                      <% end %>
                       <button class = "btn-red">REQUEST RELEASE</button>
                     </div>
-                <% break %>  
-                <% end %>
-                
+                  <% end %>
+                 <% break %>  
+                <% end %> 
               </div>
-              
-              
-						</td>
+
+              <div class = "assign_datalist">
+                <%= text_field_tag nil, nil, :id => 'asset_user_name', :class => "input_datalist", data: {autocomplete_source: User.asset_user.map { |t| { :label => t.email, :value => t.id } } }, :placeholder => "Assign To" %>
+              </div>
+
+              <div class = "arrow_div_up">
+                <%= image_tag("arrow.svg", :size => "20x20") %>
+              </div>
+            </td>
           </tr>
-          
-  		  
-  		  <% end %>
+        <% end %>
   		</tbody>
   	</table>
   </div>
+  <%= paginate @products %>
 </div>
-
-<%= paginate @products %>
+ 
 

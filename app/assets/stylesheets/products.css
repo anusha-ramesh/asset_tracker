@@ -151,7 +151,8 @@ td {
   height: 0px;
   cursor: pointer;
   float: right;
-  margin-top: -25px;
+  margin-right: -23%;
+  margin-top: -33px;
 }
 
 #login_user {
@@ -228,7 +229,41 @@ td {
   padding-left: 15px;
   margin-top: 0px;
 }
+
+.btn-green1 {
+  width: 140%;
+  cursor: pointer;
+  padding: 12px;
+  margin-bottom: 35%;
+  color: #fff;
+  background-color: #31988e;
+  border: none;
+  cursor: pointer;
+  padding-left: 15px;
+  margin-top: 0px;
+}
+
+.btn-green2 {
+  width: 140%;
+  cursor: pointer;
+  padding: 12px;
+  margin-bottom: 35%;
+  color: #fff;
+  background-color: #31988e;
+  border: none;
+  cursor: pointer;
+  padding-left: 15px;
+  margin-top: 0px;
+}
 .btn-green:hover {
+  background-color: #afafaf;
+}
+
+.btn-green1:hover {
+  background-color: #afafaf;
+}
+
+.btn-green2:hover {
   background-color: #afafaf;
 }
 
@@ -240,6 +275,15 @@ td {
   background-color: #da5454;
   border: none;
 
+}
+
+.disable_btn {
+  width: 140%;
+  cursor: default;
+  padding: 12px;
+  color: #fff;
+  background-color: #afafaf;
+  border: none;
 }
 
 .btn-red:hover {
@@ -265,7 +309,10 @@ td {
 }
 
 .user-state {
-  position: static;
+  position: relative;
+  left: -290px;
+  width: -11px;
+  top: 157px;
 }
 
 .assign_datalist {

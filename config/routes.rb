@@ -8,6 +8,7 @@ Assettracker::Application.routes.draw do
     get :autocomplete_product_asset_name, :on => :collection
     get :get_user, :on => :collection
     put :update_user, :on => :collection
+    get :user_asset_release, :on => :collection
   end
   resources :inventories
   

@@ -57,12 +57,20 @@ class ProductsController < ApplicationController
   def update_user
     @inventory = Inventory.find(params[:id])
     @user = User.find_by_email(params[:email])
-    @inventory.user_id = @user.id
-    if @inventory.save
-      redirect_to new_product_path
+    if @user == nil
+      flash[:alert] = "Not a valid user!"
     else
-      redirect_to(:back)
+      @inventory.user_id = @user.id
+      @inventory.update_attributes params[:inventory]
+      @admin = User.asset_admin
+      # UserMailer.asset_request(@user).deliver!
     end
+  end
+
+  def user_asset_release
+    render :layout => false 
+    @user = User.find_by_email(params[:email])
+    UserMailer.asset_release(@user).deliver!
   end
 
 
@@ -81,7 +89,7 @@ class ProductsController < ApplicationController
   
   def resolve_layout
     case action_name
-      when "index", "new", "create"
+      when "index", "new", "create", "show", "update_user"
       "user"
       when "get_user"
       "application"

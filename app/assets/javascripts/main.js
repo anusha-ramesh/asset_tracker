@@ -64,11 +64,7 @@ $(document).ready(function() {
       data: {id:  getValue},
       success: function(data)
       {
-
-        $('.ui-accordion-content-active').find($('.user-state')).html("");
         $('.ui-accordion-content-active').find($('.user-state')).html(data);
-        // $('.ui-accordion-content-active').show();
-        // return false;
       }
     }); 
   })
@@ -92,6 +88,7 @@ $(document).ready(function() {
   
   $('.btn-green').click(function(event)
   {
+    var pathname = window.location.pathname;
     var getEmail = $('.ui-accordion-content-active').find($('.input_datalist')).val();
     var getId = $('.ui-accordion-content-active').find($('.select_code')).val();
     var URL = 'products/update_user';
@@ -101,15 +98,38 @@ $(document).ready(function() {
       url: URL,
       data: {id: getId, email: getEmail}
     });
+    window.location = pathname;
   })
-    
-  //   // select: (event, ui) ->
 
-    // event.preventDefault()
+  $('.btn-green1').click(function(event)
+  {
+    var pathname = window.location.pathname;
+    var getEmail = $('#currentUser_email').val();
+    var getId = $('.ui-accordion-content-active').find($('.select_code')).val();
+    var URL = 'products/update_user';
+    $.ajax
+    ({
+      method: "PUT",
+      url: URL,
+      data: {id: getId, email: getEmail}
+    });
+    window.location = pathname;
+  })
 
-    // $(this).val ui.item.label
-    // $('#user_id').val ui.item.value
-  
+  $('.btn-red').click(function(event)
+  {
+    alert($('.ui-accordion-content-active').find($('.user-state')).text());
+    var getEmail = $('.ui-accordion-content-active').find($('.user-state')).text().replace('\n', '');
+    getEmail = getEmail.replace('\n','');
+    getEmail = $.trim(getEmail);
+    alert(getEmail);
+    var URL = 'products/user_asset_release';
+    $.ajax
+    ({
+      url: URL,
+      data: {email: getEmail}
+    });
+  })
     
   return false;
 });
