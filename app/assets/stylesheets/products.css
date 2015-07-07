@@ -1,19 +1,18 @@
-div.add-image
+.add-image
 {
   position: absolute;
   width: 200px;
-  height: 186px;
+  height: 175px;
   left: 477px;
-  top: 49px;
-  background: transparent;
+  top: 78px;
 }  
 
-div.btn
+.btn
 {
 	position: relative;
 }
 
-div.inventory-list
+.inventory-list
 {
 	position: relative;
 	left: 41px;
@@ -277,6 +276,23 @@ td {
 
 }
 
+.btn-red1
+{
+  width: 140%;
+  cursor: pointer;
+  padding: 12px;
+  color: #fff;
+  background-color: #da5454;
+  border: none;
+
+}
+
+.btn-red1:hover {
+  background-color: #afafaf;
+}
+
+
+
 .disable_btn {
   width: 140%;
   cursor: default;
@@ -284,6 +300,9 @@ td {
   color: #fff;
   background-color: #afafaf;
   border: none;
+  margin-bottom: 35%;
+  padding-left: 15px;
+  margin-top: 0px;
 }
 
 .btn-red:hover {
@@ -292,20 +311,10 @@ td {
 
 .ui-helper-hidden-accessible{ display:none}
 
-.search-asset
-{
-  padding-left: 0px;
-  margin-top: -20px;
-}
-
-/*.ui-menu-item
-{
-  display: none;
-}*/
-
-.asset-user
-{
-  
+.search-asset {
+  padding-left: 835px;
+  margin-top: -69px;
+  padding-bottom: 15px;
 }
 
 .user-state {
@@ -384,3 +393,54 @@ td {
     }
   }
 }
+
+.noAsset_div {
+  background: #fff;
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: block;
+}
+
+.select_code
+{
+  color: black;
+  background-color: white;
+  cursor: pointer;
+
+}
+
+.search_field
+{
+  background-color: #263238;
+  border-bottom-color: black;
+  border-color: #263238;
+  color: white;
+}
+
+.search_btn
+{
+  background-color: #263238;
+  color: white;
+  border-color: #263238;
+  cursor: pointer;
+}
+
+.pro-name
+{
+  height: 27px;
+  border: none;
+}
+
+.image
+{
+
+}
+
+.new-product
+{
+  padding-right: 42px;
+}
+

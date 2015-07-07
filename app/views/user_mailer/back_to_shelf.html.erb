@@ -4,10 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>Hi <%= @user.user_name.capitalize %>,<br>
+    <p>Hi Admin,<br>
     	<br>
-    	<%= @current_user.user_name.capitalize %> requested you to release the asset.
-    	<br><br>
+    	<%= @current_user.user_name.capitalize %> returned back the asset.
+      <br><br>
       Asset Details:<br><br>
       Name : <%= @inventory.product.asset_name %><br>
       Code : <%= @inventory.asset_code %>

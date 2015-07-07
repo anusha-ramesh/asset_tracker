@@ -1,4 +1,8 @@
-<%= form_for @product_type, url: products_types_path, html: {method: "post"} do |f| %>
-  <ol>Asset Type: <%= f.text_field :asset_type %></ol>
-  <ol><%= f.submit "Save"  %></ol>
+<div class = "product-type">
+  <%= form_for @product_type, url: products_types_path, html: {method: "post"} do |f| %>
+  <div class = "ptype">
+    Asset Type: <%= f.text_field :asset_type, :class => "type-field" %>
+  </div>
+</div>
+  <ol class = "psubmt" ><%= f.submit "Save", :class => "type-submit"  %></ol>
 <% end %>

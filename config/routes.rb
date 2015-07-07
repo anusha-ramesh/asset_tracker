@@ -9,6 +9,7 @@ Assettracker::Application.routes.draw do
     get :get_user, :on => :collection
     put :update_user, :on => :collection
     get :user_asset_release, :on => :collection
+    put :asset_to_shelf, :on => :collection
   end
   resources :inventories
   

@@ -20,8 +20,8 @@ Assettracker::Application.configure do
   :address              => "smtp.gmail.com",  
   :port                 => 587,  
   :domain               => "gmail.com",  
-  :user_name            => "studenttestmail1",  
-  :password             => "studenttestmail",  
+  :user_name            => "assettrackerqb",  
+  :password             => "qburst@clt",  
   :authentication       => "plain" ,
   :enable_starttls_auto => true 
 } 

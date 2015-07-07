@@ -1,0 +1,10 @@
+Hi Admin
+
+ <%= @current_user.user_name.capitalize %> requested an asset 
+ <% if @current_user.user_name != @user.user_name %>
+    for <%= @user.user_name.capitalize %>
+ <% end %>
+ .
+ Asset Details:
+    Name : <%= @inventory.product.asset_name %>
+    Code : <%= @inventory.asset_code %>

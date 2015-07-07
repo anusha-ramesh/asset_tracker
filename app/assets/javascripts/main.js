@@ -1,13 +1,21 @@
 $(document).ready(function() {
   var count = 0;
-
   $('.add-inventory').click(function(event)
   {
     var textDiv = $('.inventory-list:last').clone();
     textDiv = updateTextDiv(textDiv);
     textDiv.appendTo('.inventory:last');
   	return false;
- });
+  });
+
+  $('.add-ptype').click(function(event)
+  {
+    var textDiv = $('.ptype:last').clone();
+    textDiv = updateTextDiv(textDiv);
+    textDiv.appendTo('.product-type:last');
+    return false;
+
+  });
 
   var preview = $(".add-image img");
   $(".image").change(function(event)
@@ -36,7 +44,6 @@ $(document).ready(function() {
       
     },
     beforeActivate: function( event, ui ) {
-
       console.log(ui);
       ui.newHeader.hide();
       ui.oldHeader.show();
@@ -52,10 +59,7 @@ $(document).ready(function() {
 
   $('.select_code').change(function()
   {
-    // var x = $('.ui-accordion-content-active');
-
     var getValue = $(this).val();
-    // alert(getValue);
     var URL = 'products/get_user';
 
     $.ajax
@@ -66,7 +70,7 @@ $(document).ready(function() {
       {
         $('.ui-accordion-content-active').find($('.user-state')).html(data);
       }
-    }); 
+    });
   })
 
   $('.input_datalist').autocomplete({
@@ -119,6 +123,7 @@ $(document).ready(function() {
   $('.btn-red').click(function(event)
   {
     alert($('.ui-accordion-content-active').find($('.user-state')).text());
+    var getId = $('.ui-accordion-content-active').find($('.select_code')).val();
     var getEmail = $('.ui-accordion-content-active').find($('.user-state')).text().replace('\n', '');
     getEmail = getEmail.replace('\n','');
     getEmail = $.trim(getEmail);
@@ -127,14 +132,43 @@ $(document).ready(function() {
     $.ajax
     ({
       url: URL,
-      data: {email: getEmail}
+      data: {id: getId, email: getEmail}
     });
+  })
+
+  $('.btn-green2').click(function(event)
+  {
+    var pathname = window.location.pathname;
+    var getId = $('.ui-accordion-content-active').find($('.select_code')).val();
+    var URL = 'products/'+getId;
+    $.ajax
+    ({
+      method: "DELETE",
+      url: URL,
+      data: {id: getId}
+    });
+    window.location = pathname;
+  })
+
+  $('.btn-red1').click(function(event)
+  {
+    var pathname = window.location.pathname;
+    var getId = $('.ui-accordion-content-active').find($('.select_code')).val();
+    var URL = 'products/asset_to_shelf';
+    $.ajax
+    ({
+      method: "PUT",
+      url: URL,
+      data: {id: getId}
+    });
+    window.location = pathname;
   })
     
   return false;
 });
 
-function updateTextDiv(textDiv) {
+function updateTextDiv(textDiv) 
+{
   var old_name = $(textDiv.children("input")[0]).attr("name");
   var result = /\[[\d]+\]/.exec(old_name).toString();
   var old_index = result.slice(1, -1);

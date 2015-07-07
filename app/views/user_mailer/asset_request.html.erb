@@ -4,7 +4,17 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>Hi Admin<br>
+    <p>Hi Admin,<br>
+    	<br>
+    	<%= @current_user.user_name.capitalize %> requested an asset
+    	<% if @current_user.user_name != @user.user_name %>
+        for <%= @user.user_name.capitalize %>
+      <% end %>
+      .
+      <br><br>
+      Asset Details:<br><br>
+      Name : <%= @inventory.product.asset_name %><br>
+      Code : <%= @inventory.asset_code %>
     </p>
   </body>
 </html>

@@ -1,6 +1,6 @@
-<div>
+<div class = "new-product">
   <%= form_for @product do |f| %>
-    <ol>Asset Name: <%= f.text_field :asset_name %></ol>
+    <ol>Asset Name: <%= f.text_field :asset_name, :class => "pro-name" %></ol>
     <ol>Asset Image: <%= f.file_field :image, class: :image %></ol>
     <ol>Asset Type: <%= f.collection_select(:product_type_id, ProductType.all, :id, :asset_type) %></ol>
   

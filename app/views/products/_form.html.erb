@@ -1,7 +1,7 @@
 <%= form_tag products_path, method: :get do %>
  <p class = "search-asset">
-    <%= autocomplete_field_tag :search, params[:search], autocomplete_product_asset_name_products_path, :placeholder => 'Asset Name', autocomplete: "off" %>
-    <%= submit_tag "Search", :name => nil %>
+    <%= autocomplete_field_tag :search, params[:search], autocomplete_product_asset_name_products_path, :placeholder => 'Asset Name', autocomplete: "off", :class => "search_field" %>
+    <%= submit_tag "Search", :name => nil, :class => "search_btn" %>
   </p>
 <% end %>
 <div class="error" >
@@ -31,7 +31,7 @@
   	<table id = "asset_list">
   		<tbody id = "table_content_list">
   		  <% @products.each do |product|  %>
-  		   <tr class = "asset_list_row"> 
+  		    <tr class = "asset_list_row"> 
   				  <td class = "name_td">
   					  <div class= "asset_img"><%= image_tag(product.image, :size => "40x40") %></div>
   					  <div class = "asset_fieldname"><%= product.asset_name %></div>
@@ -72,16 +72,14 @@
                 </p>
               </div>
                
-              
-              
               <div class = "asset-user">
                 <% product.inventories.each do |inventory| %>
                  
                   <% if inventory.user_id == nil %>
-                  <p class = "user-state">
-                    In Shelf
-                  </p>
-                  <div class = "btn_td">
+                    <p class = "user-state">
+                      In Shelf
+                    </p>
+                    <div class = "btn_td">
                       
                       <button class = "btn-green">ASSIGN</button>
                       <% if current_user.user_name == "admin" %>
@@ -98,14 +96,18 @@
                     
                     <div class = "btn_td">
                       
-                      <button class = "btn-green">ASSIGN</button>
+                      <button class = "disable_btn">ASSIGN</button>
                       <% if current_user.user_name == "admin" %>
                         <button class = "btn-green2">DELETE</button>
                       <% else %>
                       
-                        <button class = "btn-green1">ASSIGN TO ME</button>
+                        <button class = "disable_btn">ASSIGN TO ME</button>
                       <% end %>
-                      <button class = "btn-red">REQUEST RELEASE</button>
+                      <% if inventory.user.email == current_user.email %>
+                        <button class = "btn-red1">BACK TO SHELF</button>
+                      <% else %>
+                        <button class = "btn-red">REQUEST RELEASE</button>
+                      <% end %>
                     </div>
                   <% end %>
                  <% break %>  

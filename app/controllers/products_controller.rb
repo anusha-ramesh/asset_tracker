@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
 
   def get_user
     @inventory = Inventory.find(params[:id])
-    render :layout => false 
+    # render :layout => false 
   end
 
   def update_user
@@ -62,22 +62,33 @@ class ProductsController < ApplicationController
     else
       @inventory.user_id = @user.id
       @inventory.update_attributes params[:inventory]
-      @admin = User.asset_admin
-      # UserMailer.asset_request(@user).deliver!
+      UserMailer.asset_request(@user,current_user,@inventory).deliver!
     end
   end
 
   def user_asset_release
     render :layout => false 
+    @inventory = Inventory.find(params[:id])
     @user = User.find_by_email(params[:email])
-    UserMailer.asset_release(@user).deliver!
+    UserMailer.asset_release(@user,current_user,@inventory).deliver!
+  end
+
+  def asset_to_shelf
+    @inventory = Inventory.find(params[:id])
+    @inventory.user_id = nil
+    @inventory.update_attributes params[:inventory]
+    UserMailer.back_to_shelf(current_user,@inventory).deliver!
+  end
+
+  def destroy
+    @inventory = Inventory.find(params[:id])
+    @inventory.destroy
   end
 
 
   private
 
   def product_params
-  	#params.require(:product).permit(:asset_name, :image, :ProductType_id, :inventories_attributes => []) 
     {
       :asset_name => params[:product][:asset_name],
       :image => params[:product][:image],
@@ -90,9 +101,7 @@ class ProductsController < ApplicationController
   def resolve_layout
     case action_name
       when "index", "new", "create", "show", "update_user"
-      "user"
-      when "get_user"
-      "application"
+        "user"
     end
   end
 

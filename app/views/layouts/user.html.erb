@@ -40,11 +40,11 @@
 			<br clear = "all">
     </div>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-     <div class = "footer">
+    <!-- <p class="notice"><%= notice %></p> -->
+    <div class = "footer">
       <p>
         © 2015<%= image_tag("QBlogo_black.png") %>
-     </p>
+      </p>
     </div>
     <%= hidden_field_tag "currentUser_email", current_user.email %>
   </body>
