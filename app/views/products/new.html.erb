@@ -1,5 +1,10 @@
 <div class = "new-product">
   <%= form_for @product do |f| %>
+    <%  if @product.errors.any? %>
+      <div class="error" >
+       <%= @product.errors.full_messages.first  %>
+      </div>
+    <% end %>
     <ol>Asset Name: <%= f.text_field :asset_name, :class => "pro-name" %></ol>
     <ol>Asset Image: <%= f.file_field :image, class: :image %></ol>
     <ol>Asset Type: <%= f.collection_select(:product_type_id, ProductType.all, :id, :asset_type) %></ol>
@@ -11,12 +16,12 @@
     <div class = "inventory" >
       <%= f.fields_for :inventories, [Inventory.new] do |u| %>
         <div class = "inventory-list">
-          Asset code:<%= u.text_field :asset_code %>
+          Asset code: <%= u.text_field :asset_code, :class => "pro-cod" %>
         </div>
       <% end %>
     </div>
     
-    <ol><%= f.submit "Save"  %></ol>
+    <ol><%= f.submit "Save", :class => "asset-save" %></ol>
   <% end %>
 
   <div class = "add-image">
@@ -24,6 +29,4 @@
   </div>
 </div>
 
-<div class="error" >
-  <%= flash[:alert]%>
-</div>
+

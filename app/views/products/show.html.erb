@@ -1,0 +1,13 @@
+<div class = "new-asset">
+	<div class = "new-img">
+	  <%= image_tag(@product.image) %>
+	</div>
+
+	<div class = "asset-data">
+		<ol>Asset Name: <%= @product.asset_name %></ol>
+		<ol>Asset Type: <%= @product.product_type.asset_type %></ol>
+		<ol>Asset Code: 
+		  <%= collection_select(@product.inventories, :id,@product.inventories.all, :id, :asset_code,{}, {class: :select_code}) %> </ol>
+  </div>
+</div>
+  

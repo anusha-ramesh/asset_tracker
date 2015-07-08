@@ -24,11 +24,13 @@ gem 'devise_ldap_authenticatable'
 gem "paperclip", "~> 4.2"
 # gem 'strong_parameters'
 gem 'quiet_assets', group: :development
+gem "dynamic_form"
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'rails3-jquery-autocomplete'
 gem 'kaminari'
 gem 'paper_trail', '~> 4.0.0.rc'
+gem 'whenever', :require => false
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

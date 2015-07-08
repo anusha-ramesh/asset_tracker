@@ -3,8 +3,8 @@ class ProductsController < ApplicationController
   respond_to :js, :html
   before_filter :authenticate_user!
   before_filter :set_cache_buster
-  before_filter :admin_authorize, only: [:new, :create]
-  autocomplete :product, :asset_name
+  before_filter :admin_authorize, only: [:new, :create, :destroy]
+  autocomplete :product, :asset_name, :full => true
 	def new
     @product = Product.new
 	end
@@ -38,15 +38,15 @@ class ProductsController < ApplicationController
 	def create
     @product = Product.new(product_params)
     if @product.save
-      if(current_user.user_name == "admin")
-        redirect_to admin_index_path
-      else
-    	  redirect_to root_path
-      end
+      render action: "show"
     else
-      flash[:alert] = "Fields require!"
-    	redirect_to new_product_path
+      # flash[:alert] = "Fields require!"
+    	render action:"new"
     end
+  end
+
+  def show
+    @product = Product.find(params[:id])
   end
 
   def get_user
@@ -82,7 +82,13 @@ class ProductsController < ApplicationController
 
   def destroy
     @inventory = Inventory.find(params[:id])
-    @inventory.destroy
+    @product = @inventory.product
+    if @inventory.destroy
+      if @product.inventories.empty?
+        @product.destroy
+      end
+    end
+    
   end
 
 
@@ -102,6 +108,8 @@ class ProductsController < ApplicationController
     case action_name
       when "index", "new", "create", "show", "update_user"
         "user"
+      # when "get_user"
+      #   "application"
     end
   end
 

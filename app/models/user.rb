@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
       self.email = Devise::LDAP::Adapter.get_ldap_param(self.user_name,"mail").first
     end
   end
+
 end

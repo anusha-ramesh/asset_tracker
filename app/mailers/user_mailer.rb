@@ -19,4 +19,8 @@ class UserMailer < ActionMailer::Base
   	@inventory = inventory
   	mail(to: User.asset_admin.map(&:email) , subject: 'QuickAsset - Asset Back to Shelf')
   end
+
+  def daily_status
+    mail(to: User.asset_admin.map(&:email), subject: "Asset - Status")
+  end
 end

@@ -173,8 +173,10 @@ td {
 
 .error
 {
-  color: red;
-  padding-left: 126px;
+  color: #A80000 ;
+  font-size: x-large;
+  display: table;
+  height: 0px;
 }
 
 .select_user
@@ -434,13 +436,87 @@ td {
   border: none;
 }
 
-.image
-{
-
-}
-
 .new-product
 {
-  padding-right: 42px;
+  position: relative;
+  margin-top: 97px;
+  margin-left: 113px;
+  display: block;
+  height: 268px;
+  padding-right: 50px;
 }
 
+.ui-accordion-header
+{
+  cursor: pointer;
+}
+
+.pro-cod
+{
+  height: 27px;
+}
+
+#product_product_type_id
+{
+  background-color: white;
+  border: none;
+  height: 28px;
+  cursor: pointer;
+}
+
+.asset-save
+{
+  color: white;
+  background-color: #31988e;
+  border: none;
+  padding-left: 19px;
+  padding-right: 19px;
+  padding-bottom: 6px;
+  padding-top: 6px;
+  cursor: pointer;
+}
+
+.asset-save:hover
+{
+  background-color: #afafaf;
+}
+
+.add-inventory
+{
+  background-color: #31988e;
+  border: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.add-inventory:hover
+{
+  background-color: #afafaf;
+}
+
+.new-asset
+{
+  background-color: white;
+  height: 485px;
+}
+
+.asset-data
+{
+  padding-left: 44%;
+  margin-top: -156px;
+}
+
+.new-img
+{
+  padding-top: 115px;
+  padding-left: 263px;
+  margin-top: 15px;
+}
+
+ol
+{
+  position:relative;
+}
